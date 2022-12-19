@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/posts', function () {
+    return view('posts');
+});
+
+Route::get('/{names}', function ($names) {
+    $names = [];
+    
+   
+    return view('posts', ['names' => $names]);
 });
