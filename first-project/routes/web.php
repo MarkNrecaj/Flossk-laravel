@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +15,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/posts', function () {
+//     return view('posts');
 // });
 
-Route::get('/posts', function () {
-    return view('posts');
-});
+// Route::get('/{names}', function ($names) {
+//     // $names = ['name1','name2'];
+//     $names = [];
+//     return view('posts', ['names' => $names]);
+// });
 
-Route::get('/{names}', function ($names) {
-    $names = [];
-    
-   
-    return view('posts', ['names' => $names]);
-});
+Route::get('/test', [Controller::class, 'checkarray']);
+
+// Route::get('/{names}', [TestController::class, 'checkarray2']);
+
+// Route::get('/test/{names}', [Test2Controller::class, 'show']);
+
+Route::get('/test/{names}', [Controller::class, 'checkarray22']);
+
+Route::get('/posts', [PostController::class, 'index']);
+
+Route::post('/post', [PostController::class, 'store'])->name('post');
+
+
+
+

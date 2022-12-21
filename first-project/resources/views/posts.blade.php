@@ -9,14 +9,15 @@
 </head>
 
 <body>
-    @if (count($names))
-    @foreach ($names as $name)
-       {{$name}}
-    @endforeach
-    @else
-        ska sen
-    @endif
-    
+    <form action="/post" method="post">
+        @csrf
+        User:<input type="text" name="author_id">
+        Title:<input type="text" name="title">
+        Des:<input type="text" name="description">
+        Slug:<input type="text" name="slug">
+        Published:<input type="date" name="published">
+        <input type="submit">
+    </form>
 
 </body>
 
