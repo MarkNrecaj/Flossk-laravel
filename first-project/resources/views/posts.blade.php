@@ -9,6 +9,10 @@
 </head>
 
 <body>
+@if (Session::has('message'))
+    {{Session::get('message')}}
+@endif
+    
     <form action="/post" method="post">
         @csrf
         User:<input type="text" name="author_id">
