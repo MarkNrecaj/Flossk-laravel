@@ -9,9 +9,31 @@
 </head>
 
 <body>
-@if (Session::has('message'))
-    {{Session::get('message')}}
-@endif
+    {{-- @if (Session::has('message'))
+        {{Session::get('message')}}
+    @endif
+
+    @if ($errors->has('author_id'))
+        {{ $errors->first('author_id') }}
+    @endif
+
+    @if ($errors->has('author_id'))
+        {{ $errors- >first('author_id') }}
+    @endif
+
+    @if ($errors->has('author_id'))
+        {{ $errors->first('author_id') }}
+    @endif
+
+    @if ($errors->has('author_id'))
+        {{ $errors->first('author_id') }}
+    @endif --}}
+
+ 
+
+    {{-- @foreach ($messages->all() as $message)
+        {{ $message }}
+    @endforeach --}}
     
     <form action="/post" method="post">
         @csrf
@@ -22,7 +44,34 @@
         Published:<input type="date" name="published">
         <input type="submit">
     </form>
+    <br>
+
+    <table >
+        <thead>
+          <th>Author id</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Slug</th>
+          <th>Published</th>
+        </thead>
+
+    @foreach ($posts as $post)
+    <tr>
+        <td>{{$post['author_id']}}</td>
+        <td>{{$post['title']}}</td>
+        <td>{{$post['description']}}</td>
+        <td>{{$post['slug']}}</td>
+        <td>{{$post['published']}}</td>
+      </tr>
+    @endforeach
+        
+      </table>
 
 </body>
 
 </html>
+
+<style>table, th, td {
+    border: 1px solid black;
+    padding: 5px;
+  }</style>

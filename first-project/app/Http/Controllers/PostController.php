@@ -8,8 +8,9 @@ use App\Models\Post;
 class PostController extends Controller
 {
     function index() {
-        // dd('here');
-        return view('posts');
+        $posts =Post::get();
+        // dd($posts);
+        return view('posts', ['posts' => $posts]);
     }
 
     public function store(Request $request)
@@ -26,14 +27,6 @@ class PostController extends Controller
 
             
         ]);
-
-        // $data = [
-        //     'author_id' => $request->input('author_id'),
-        //     'title' => $request->input('title'),
-        //     'description' => $request->input('description'),
-        //     'slug' => $request->input('slug'),
-        //     'published' => $request->input('published'),
-        // ];
             Post::create($data);
 
             return back()->with('message', 'Post has been saved!');
