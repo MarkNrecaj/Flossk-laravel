@@ -39,11 +39,11 @@
 
     <form action="/post" method="post">
         @csrf
-        User:<input type="text" name="author_id">
-        Title:<input type="text" name="title">
-        Des:<input type="text" name="description">
-        Slug:<input type="text" name="slug">
-        Published:<input type="date" name="published">
+        User:<input type="text" name="author_id" value="{{ old('author_id') }}">
+        Title:<input type="text" name="title" value="{{ old('title') }}">
+        Des:<input type="text" name="description" value="{{ old('description') }}">
+        Slug:<input type="text" name="slug" value="{{ old('slug') }}">
+        Published:<input type="date" name="published" value="{{ old('published') }}">
         <input type="submit">
     </form>
 
@@ -77,6 +77,8 @@
                 <td>{{ $post['published'] }}</td>
             </tr>
         @endforeach
+
+        {{-- {{ $posts->links() }} --}}
 
     </table>
 

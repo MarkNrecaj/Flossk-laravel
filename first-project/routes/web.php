@@ -37,9 +37,19 @@ Route::get('/test', [Controller::class, 'checkarray']);
 
 Route::get('/test/{names}', [Controller::class, 'checkarray22']);
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
 
 Route::post('/post', [PostController::class, 'store'])->name('post');
+
+Route::get('/posts/{post}', [PostController::class, 'edit']);
+
+Route::patch('/posts/{post}', [PostController::class, 'update']);
+
+
+
+
+
+
 
 
 
